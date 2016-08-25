@@ -9,6 +9,28 @@ public class age {
 	public static String requestBirthDate (){
 	 String inputString;
 	 inputString = JOptionPane.showInputDialog(null, "Introducir fecha (dd/MM/YYYY):");
+	 
+	 try{
+	 if(inputString.length() == 10)
+		 if(inputString.charAt(2) == '/' && inputString.charAt(5) == '/'){			 
+			 if(Integer.parseInt(inputString.substring(0, 2)) < 0 || Integer.parseInt(inputString.substring(0, 2)) > 31 ){
+				 JOptionPane.showMessageDialog(null,"Fecha inválida, día fuera de rango.", "Fecha inválida", JOptionPane.ERROR_MESSAGE);
+				 return " ";}
+			 if(Integer.parseInt(inputString.substring(3, 5)) < 0 || Integer.parseInt(inputString.substring(3, 5)) > 12 ){
+				 JOptionPane.showMessageDialog(null,"Fecha inválida, mes fuera de rango.", "Fecha inválida", JOptionPane.ERROR_MESSAGE);
+				 return " ";} 
+			if(Integer.parseInt(inputString.substring(6, 10)) < 0 || Integer.parseInt(inputString.substring(6, 10)) > 2016 ){
+				 JOptionPane.showMessageDialog(null,"Fecha inválida, año fuera de rango.", "Fecha inválida", JOptionPane.ERROR_MESSAGE);
+				 return " ";}
+			}
+		 else
+			 JOptionPane.showMessageDialog(null,"Formato inválido", "Formato inválido", JOptionPane.ERROR_MESSAGE);
+	 else
+		 JOptionPane.showMessageDialog(null,"Formato inválido", "Formato inválido", JOptionPane.ERROR_MESSAGE);
+	 }catch(Exception e){
+		 JOptionPane.showMessageDialog(null,"Formato inválido", "Formato inválido", JOptionPane.ERROR_MESSAGE);
+	 }
+	 
 	 return inputString;
 	}
 	
@@ -104,7 +126,8 @@ public class age {
 	
 	public static void main (String[] args){
 		String myBirthDate = requestBirthDate();
-		getAge(myBirthDate);
+		if (myBirthDate.length() == 10){
+		 getAge(myBirthDate);}
 	}
 	
 
