@@ -22,32 +22,32 @@ public class age {
 		 if(input.charAt(2) == '/' && input.charAt(5) == '/'){
 			 if(Integer.parseInt(input.substring(0, 2)) < 0 || Integer.parseInt(input.substring(0, 2)) > 31 ){
 				 JOptionPane.showMessageDialog(null,"Fecha inválida, día fuera de rango.", "Fecha inválida", JOptionPane.ERROR_MESSAGE);
-				 return " ";}
+				 return "Día inválido";}
 			 
 			 if(Integer.parseInt(input.substring(3, 5)) < 0 || Integer.parseInt(input.substring(3, 5)) > 12 ){
 				 JOptionPane.showMessageDialog(null,"Fecha inválida, mes fuera de rango.", "Fecha inválida", JOptionPane.ERROR_MESSAGE);
-				 return " ";} 
+				 return "Mes inválido";} 
 			if(Integer.parseInt(input.substring(6, 10)) < 0 || Integer.parseInt(input.substring(6, 10)) > 2016 ){
 				 JOptionPane.showMessageDialog(null,"Fecha inválida, año fuera de rango.", "Fecha inválida", JOptionPane.ERROR_MESSAGE);
-				 return " ";}
+				 return "Año inválido";}
 			}
 		 else
 			 {
 			 JOptionPane.showMessageDialog(null,"Formato inválido", "Formato inválido", JOptionPane.ERROR_MESSAGE);
-			 return " ";
+			 return "Formato inválido";
 			 }
 	 else{
 		 JOptionPane.showMessageDialog(null,"Formato inválido", "Formato inválido", JOptionPane.ERROR_MESSAGE);
-		 return " ";
+		 return "Formato inválido";
 	 }
 	 }catch(Exception e){
 		 JOptionPane.showMessageDialog(null,"Formato inválido", "Formato inválido", JOptionPane.ERROR_MESSAGE);
-		 return " ";
+		 return "Formato inválido";
 	 }
 	 return input;
 	}
 	
-	public static void getAge(String date){
+	public static String getAge(String date){
 	 
 	 int cday = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 	 int cmonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
@@ -135,14 +135,16 @@ public class age {
 	 }
 	 
 	 JOptionPane.showMessageDialog(null, "Tienes " + resultDay + " días, " + resultMonth + " meses y " + resultYear + " años.", "Tu edad", JOptionPane.INFORMATION_MESSAGE);
+	 return resultYear + " años " + resultMonth + " meses y " + resultDay + " días";
 	}
 	
 	public static void main (String[] args){
 		String myBirthDate = requestBirthDate();
 		String Valid=Validate (myBirthDate);
 		
-		
 		if (Valid.length() == 10){
 		 getAge(Valid);}
 	}
+	
+
 }
